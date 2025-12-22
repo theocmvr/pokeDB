@@ -8,6 +8,7 @@ class Pokemon {
         int pokedex_number;
     public:
         Pokemon(std::string name, std::string type, int pokedex_number);
-        
+        Pokemon();
+        ~Pokemon() = default;
 };
 #endif

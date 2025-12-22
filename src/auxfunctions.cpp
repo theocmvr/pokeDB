@@ -11,6 +11,6 @@ Pokemon getinfo(void) {
     std::cin >> type;
     std::cout << "Pokedex number: ";
     std::cin >> pokedex_number;
-    Pokemon current = Pokemon(name, type, pokedex_number);
+    Pokemon current(name, type, pokedex_number);
     return current;
 }
