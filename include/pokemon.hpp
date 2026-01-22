@@ -12,10 +12,14 @@ class Pokemon {
     public:
         Pokemon(std::string name, std::vector<PokemonType> type, int pokedex_number);
         ~Pokemon() = default;
-        std::string getname() const;
+        const std::string& getname() const;
         std::vector<PokemonType> gettype() const;
         int getnumber() const;
         void print() const;
+
+    bool operator==(const Pokemon& other) const;
+    bool operator!=(const Pokemon& other) const;
+
 };
 
 #endif

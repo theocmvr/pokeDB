@@ -13,11 +13,21 @@ PokeDB::PokeDB(std::string filename) {
 
     csv::CSVReader reader(filename, format);
     for (auto& row : reader) {
+        
+        if (row.size() == 0) {
+            continue;
+        }
+
+        if (row[0].is_null() || row[0].get<std::string>().empty()) {
+            continue;
+        }
+
         int number = row[0].get<int>();
         std::string name = row[1].get<std::string>();
         std::string typeColumn = row[2].get<std::string>();
         std::vector<PokemonType> types = parseTypes(typeColumn);
         add(Pokemon(name, types, number));
+    
     }
 }
 

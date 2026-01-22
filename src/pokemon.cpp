@@ -8,17 +8,23 @@
 Pokemon::Pokemon(std::string name, std::vector<PokemonType> type, int pokedex_number) 
     : name(name), types(type), pokedex_number(pokedex_number) {
 
-        if (name.empty() and pokedex_number <= 0) {
-            throw std::invalid_argument("Name is empty and Pokedex number doesn't exist");
+        if (name.empty() and type.empty() and (pokedex_number <= 0  or pokedex_number > 1025)) {
+            throw std::invalid_argument("Name is empty , Type is empty and Pokedex number invalid");
+        } else if (name.empty() and type.empty()) {
+            throw std::invalid_argument("Name is empty and Type is empty");
+        } else if ((pokedex_number <= 0 or pokedex_number > 1025) and type.empty()) {
+            throw std::invalid_argument("Pokedex number invalid and Type is empty");
         } else if (name.empty()) {
             throw std::invalid_argument("Name is empty");
-        } else if (pokedex_number <= 0) {
-            throw std::invalid_argument("Pokedex number doesn't exist");
+        } else if (type.empty()) {
+            throw std::invalid_argument("Type is empty");
+        } else if ((pokedex_number <= 0 or pokedex_number > 1025)) {
+            throw std::invalid_argument("Pokedex number invalid");
         }
 
     }
 
-std::string Pokemon::getname() const {
+const std::string& Pokemon::getname() const {
     return this->name;
 }
 
@@ -38,4 +44,11 @@ void Pokemon::print() const {
         if (i != (int)this->types.size()-1) std::cout << ", ";
     }
     std::cout << ")" << std::endl;
+}
+
+bool Pokemon::operator==(const Pokemon& other) const {
+    return (name == other.name && types == other.types && pokedex_number == other.pokedex_number);
+}
+bool Pokemon::operator!=(const Pokemon& other) const {
+    return !(*this == other);
 }

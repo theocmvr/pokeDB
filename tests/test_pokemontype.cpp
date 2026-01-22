@@ -6,6 +6,18 @@ TEST(PokeTypeClassTest, StringToEnum) {
     EXPECT_EQ(stringtotype("fIrE"), PokemonType::Fire);
     EXPECT_EQ(stringtotype("Grass"), PokemonType::Grass);
     EXPECT_EQ(stringtotype("gRaSs"), PokemonType::Grass);
+    EXPECT_THROW(
+        stringtotype(" Fire "),
+        std::invalid_argument
+    );
+    EXPECT_THROW(
+        stringtotype("F i r e"),
+        std::invalid_argument
+    );
+    EXPECT_THROW(
+        stringtotype(""),
+        std::invalid_argument
+    );
 }
 
 TEST(PokeTypeClassTest, EnumToString) {

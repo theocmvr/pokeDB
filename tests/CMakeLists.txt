@@ -9,15 +9,18 @@ add_executable(
 
 target_link_libraries(
     pokedb_tests
+    gtest
     gtest_main
     pokedb_lib
 )
 
-configure_file(
-    ${PROJECT_SOURCE_DIR}/tests/test_data.csv
-    ${PROJECT_BINARY_DIR}/tests/test_data.csv
-    COPYONLY
+file(GLOB TEST_CSV_FILES
+    ${PROJECT_SOURCE_DIR}/tests/*.csv
 )
+
+file(COPY ${TEST_CSV_FILES}
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+
 
 target_compile_definitions(
     pokedb_tests

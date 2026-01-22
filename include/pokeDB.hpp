@@ -9,6 +9,7 @@ class PokeDB {
     private:
         std::vector<Pokemon> pokedb;
     public:
+        PokeDB() = default;
         PokeDB(std::string filename);
         void add(const Pokemon& newPokemon);
         void listall() const;
