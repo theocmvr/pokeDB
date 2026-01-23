@@ -5,7 +5,7 @@
 
 class PokeDBTest : public ::testing::Test {
     protected:
-    std::string WorkingCSV, EmptyCSV, OneLineCSV;
+    std::string WorkingCSV, OneLineCSV;
     PokeDB db1, db3;
     void SetUp() override {
         WorkingCSV = std::string(TEST_DATA_DIR) + "/test_data.csv";
