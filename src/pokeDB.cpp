@@ -35,10 +35,8 @@ void PokeDB::add(const Pokemon& newPokemon) {
     pokedb.push_back(newPokemon);
 }
 
-void PokeDB::listall() const {
-    for (int i(0); i < (int)pokedb.size(); i++) {
-        pokedb[i].print();
-    }
+const std::vector<Pokemon>&  PokeDB::listall() const {
+    return pokedb;
 }
 
 const Pokemon& PokeDB::searchByName(const std::string& target) const {
@@ -48,6 +46,15 @@ const Pokemon& PokeDB::searchByName(const std::string& target) const {
         }
     }
     throw std::invalid_argument("Pokemon not found");
+}
+
+const Pokemon* PokeDB::searchByNumber(int pokedexNumber) const {
+    for (const auto& p : pokedb) {
+        if (p.getnumber() == pokedexNumber) {
+            return &p;
+        }
+    }
+    return nullptr;
 }
 
 bool PokeDB::containsNumber(int pokedexNumber) const {

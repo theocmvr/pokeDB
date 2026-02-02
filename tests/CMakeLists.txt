@@ -11,7 +11,7 @@ target_link_libraries(
     pokedb_tests
     gtest
     gtest_main
-    pokedb_lib
+    core_lib
 )
 
 file(GLOB TEST_CSV_FILES

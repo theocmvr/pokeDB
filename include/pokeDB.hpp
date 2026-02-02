@@ -12,8 +12,9 @@ class PokeDB {
         PokeDB() = default;
         PokeDB(std::string filename);
         void add(const Pokemon& newPokemon);
-        void listall() const;
+        const std::vector<Pokemon>&  listall() const;
         const Pokemon& searchByName(const std::string& target) const;
+        const Pokemon* searchByNumber(int pokedexNumber) const;
         bool containsNumber(int pokedexNumber) const;
         int sizedb();
 };
