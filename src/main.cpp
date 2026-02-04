@@ -18,9 +18,11 @@ int main(int argc, char* argv[]) {
     
     if (!glfwInit())
         return -1;
+    
+        float main_scale = ImGui_ImplGlfw_GetContentScaleForMonitor(glfwGetPrimaryMonitor());
 
     GLFWwindow* window =
-        glfwCreateWindow(1280, 720, "PokeDB", nullptr, nullptr);
+        glfwCreateWindow((int)(1280*main_scale), (int)(720*main_scale), "PokeDB", nullptr, nullptr);
 
     if (!window) {
         glfwTerminate();
@@ -30,6 +32,7 @@ int main(int argc, char* argv[]) {
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1);
 
+    
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
 
@@ -37,6 +40,11 @@ int main(int argc, char* argv[]) {
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
     ImGui::StyleColorsDark();
+    
+    ImGuiStyle& style = ImGui::GetStyle();
+    style.ScaleAllSizes(main_scale);       
+    style.FontScaleDpi = 1.2*main_scale;   
+    style.FontSizeBase = 200.0f;
 
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init("#version 130");
