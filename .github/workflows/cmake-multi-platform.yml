@@ -11,15 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Configure CMake
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DENABLE_GUI=OFF
 
       - name: Build
-        run: cmake --build build --config Release
+        run: cmake --build build
 
       - name: Run tests
-        working-directory: build
-        run: ctest --output-on-failure
+        run: ctest --test-dir build --output-on-failure

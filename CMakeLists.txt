@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.16)
 
 project(poke_db VERSION 0.1.0 LANGUAGES CXX)
 
+enable_testing()
+
 option(ENABLE_GUI "Build GUI components" ON)
 
 set(CMAKE_CXX_STANDARD 17)
