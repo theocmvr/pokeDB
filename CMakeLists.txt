@@ -7,6 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include(FetchContent)
 
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+
 FetchContent_Declare(
   googletest
   URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
@@ -44,7 +46,7 @@ add_library(core_lib
 )
 
 target_include_directories(core_lib PUBLIC include)
-target_compile_options(core_lib PRIVATE -Wall -Wextra -Wpedantic)
+target_compile_options(core_lib PRIVATE $<$<CXX_COMPILER_ID:GNU,Clang>:-Wall -Wextra -Wpedantic>)
 
 add_library(gui_lib
     src/pokeGUI.cpp
