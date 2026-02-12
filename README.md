@@ -16,9 +16,10 @@ flowchart TB
     ll -- data access --> dl["Database<br/>- CSV parsing<br/>- Pokémon details"]
     dl --> lf["Raw Data<br/>(CSV files)"]
 
-    classDef main fill:#CCE6FF,stroke:#222,stroke-width:2px
-    classDef layer fill:#F9F9FF,stroke:#888,stroke-width:1.5px
-    classDef assets fill:#F7FFE0,stroke:#88B04B,stroke-width:1.5px
+    classDef main fill:#4DA3FF,color:#000,stroke:#0B3C5D,stroke-width:2.5px
+    classDef layer fill:#E6E6FA,color:#000,stroke:#4B0082,stroke-width:2px
+    classDef assets fill:#C7E59E,color:#000,stroke:#4F772D,stroke-width:2px
+
 
     class main main
     class il,ll,dl layer
